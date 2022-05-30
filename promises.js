@@ -88,3 +88,63 @@ deletePost();
 
 Promise.all([createPost, updateLastUserActivityTime])
     .then([createPostresolved, updateLastUserActivityTimeresolved]);
+
+
+const movie = async () => {
+
+const promiseWifeBringingTickets = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('ticket'), 3000);
+});    
+const getPopcorn = new Promise((resolve, reject) => resolve(`popcorn`));
+const addButter = new Promise((resolve,  reject) => resolve(`butter`));
+let ticket = await promiseWifeBringingTickets;
+
+console.log(`wife: i have the ${ticket}`);
+console.log('husband: we should go in');
+console.log('wife: no, i am hungry');
+
+let popcorn = await getPopcorn;
+
+console.log(`husband: i got some ${popcorn}`);
+console.log('husband: we should go in');
+console.log('wife: I need buuter on my popcorn');
+
+let butter = await addButter;
+
+console.log(`husband: i got some ${butter} on popcorn`);
+console.log('husband: anything else');
+console.log('wife: get in,, its late');
+console.log('husband: thank you for the reminder');
+
+return ticket;
+
+}
+
+
+//Promise all of above ticket issue, as husband and wife both went to buy all
+// needed food or good for movie
+
+const unexpectedmovie = async () => {
+
+    const promiseWifeBringingTickets = new Promise((resolve,reject) => {
+        setTimeout(() => resolve('ticket'), 3000);
+    });    
+    const getPopcorn = new Promise((resolve, reject) => resolve(`popcorn`));
+    const addButter = new Promise((resolve,  reject) => resolve(`butter`));
+    const coldDrink = new Promise((resolve,  reject) => resolve(`drink`));
+    
+    let ticket = await promiseWifeBringingTickets;
+    let popcorn = await getPopcorn;
+    let butter = await addButter;
+    let drink = await coldDrink;
+    
+    console.log(`${popcorn} ${butter} ${drink}`);
+    
+    return ticket;
+    
+    }
+    
+
+movie().then((m) => console.log(`Person3: show ${ticket}`));
+unexpectedmovie().then((m) => console.log(`Person$: show ${ticket}`));
+
